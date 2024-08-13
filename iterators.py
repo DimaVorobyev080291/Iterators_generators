@@ -1,0 +1,48 @@
+class FlatIterator:
+
+    def __init__(self, list_of_list):
+        """Определяем атрибут"""
+        self.list_of_list = list_of_list
+
+
+    def __iter__(self):
+        """Определяем курсоры и праметр остановки"""
+        self._stopped = False
+        self.main_list_cursor = 0 
+        self.nested_list_cursor = 0
+        return self
+
+    def __next__(self):
+        """Определяем и возвращаем следущий элемент списка списков"""
+        if not self._stopped:
+            while self.main_list_cursor < len(self.list_of_list):
+                if self.nested_list_cursor < len(self.list_of_list[self.main_list_cursor]):
+                    cursor = self.list_of_list[self.main_list_cursor][self.nested_list_cursor]
+                    self.nested_list_cursor += 1
+                    return cursor
+                self.main_list_cursor +=1
+                self.nested_list_cursor = 0
+            self._stopped = True
+        raise StopIteration
+
+
+def test_1():
+
+    list_of_lists_1 = [
+        ['a', 'b', 'c'],
+        ['d', 'e', 'f', 'h', False],
+        [1, 2, None]
+    ]
+
+    for flat_iterator_item, check_item in zip(
+            FlatIterator(list_of_lists_1),
+            ['a', 'b', 'c', 'd', 'e', 'f', 'h', False, 1, 2, None]
+    ):
+
+        assert flat_iterator_item == check_item
+
+    assert list(FlatIterator(list_of_lists_1)) == ['a', 'b', 'c', 'd', 'e', 'f', 'h', False, 1, 2, None]
+
+
+if __name__ == '__main__':
+    test_1()
