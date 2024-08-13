@@ -16,7 +16,6 @@ class FlatIterator:
         ...
         return item
 
-
 def test_1():
 
     list_of_lists_1 = [
@@ -34,19 +33,18 @@ def test_1():
 
     assert list(FlatIterator(list_of_lists_1)) == ['a', 'b', 'c', 'd', 'e', 'f', 'h', False, 1, 2, None]
 
-
 if __name__ == '__main__':
     test_1()
+
+
 2. Доработать функцию flat_generator. Должен получиться генератор, который принимает список списков и возвращает их плоское представление. Функция test в коде ниже также должна отработать без ошибок.
 import types
-
 
 def flat_generator(list_of_lists):
 
     ...
     yield
     ...
-
 
 def test_2():
 
@@ -67,14 +65,13 @@ def test_2():
 
     assert isinstance(flat_generator(list_of_lists_1), types.GeneratorType)
 
-
 if __name__ == '__main__':
     test_2()
-    
+
+
 4.* Необязательное задание. Написать генератор, аналогичный генератору из задания 2, но обрабатывающий списки с любым уровнем вложенности. Шаблон и тест в коде ниже:
 
 import types
-
 
 def flat_generator(list_of_list):
     ...
@@ -99,7 +96,6 @@ def test_4():
     assert list(flat_generator(list_of_lists_2)) == ['a', 'b', 'c', 'd', 'e', 'f', 'h', False, 1, 2, None, '!']
 
     assert isinstance(flat_generator(list_of_lists_2), types.GeneratorType)
-
 
 if __name__ == '__main__':
     test_4()

@@ -6,6 +6,7 @@ def flat_generator(list_of_lists):
             for elem in sub_list:
                 yield elem
 
+
 def test_2():
 
     list_of_lists_1 = [
@@ -25,10 +26,8 @@ def test_2():
 
     assert isinstance(flat_generator(list_of_lists_1), types.GeneratorType)
 
-
 if __name__ == '__main__':
     test_2()
-
 
 
 def flat_generator_difficult(list_of_list):
@@ -39,6 +38,7 @@ def flat_generator_difficult(list_of_list):
                 yield sub_elem
         else:
             yield elem
+
 
 def test_4():
 
@@ -58,7 +58,6 @@ def test_4():
     assert list(flat_generator_difficult(list_of_lists_2)) == ['a', 'b', 'c', 'd', 'e', 'f', 'h', False, 1, 2, None, '!']
 
     assert isinstance(flat_generator_difficult(list_of_lists_2), types.GeneratorType)
-
 
 if __name__ == '__main__':
     test_4()

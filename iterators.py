@@ -4,7 +4,6 @@ class FlatIterator:
         """Определяем атрибут"""
         self.list_of_list = list_of_list
 
-
     def __iter__(self):
         """Определяем курсоры и праметр остановки"""
         self._stopped = False
@@ -42,7 +41,6 @@ def test_1():
         assert flat_iterator_item == check_item
 
     assert list(FlatIterator(list_of_lists_1)) == ['a', 'b', 'c', 'd', 'e', 'f', 'h', False, 1, 2, None]
-
 
 if __name__ == '__main__':
     test_1()
